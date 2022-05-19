@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">ng_navante_base list</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="priority" eval="300"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_ref']" position="after">
+                    <field name="bill_type" />
+                    <field name="is_complete_job" attrs="{'invisible': [('bill_type', '=', 'normal')], 'required': [('bill_type', '=', 'service')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="is_service_order"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

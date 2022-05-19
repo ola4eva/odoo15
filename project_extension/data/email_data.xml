@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Task completed -->    
+        <record id="task_completed" model="mail.template">
+            <field name="name">Project Task: Task Completed</field>
+            <field name="subject">{{ object.name }} Has Been Completed</field>
+            <field name="email_from">{{ user.company_id.email }}</field>
+            <field name="email_to">{{ object.project_id.user_id.partner_id.email_formatted }}</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>Dear <t t-out="object.project_id.user_id.partner_id.name"/>,</p>
+                    <p>Task, <t t-out="object.name"/>, has been completed.</p>
+                    <p>Best Regards,</p>
+                    <p>Administrator.</p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Task 1 day overdue -->    
+        <record id="task_one_day_overdue" model="mail.template">
+            <field name="name">Project Task: One Day Overdue</field>
+            <field name="subject">Task Is One Day Overdue</field>
+            <field name="email_from">{{ user.company_id.email }}</field>
+            <field name="email_to">{{ ctx.get('recipient')['email'] }}</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>Dear <t t-out="ctx.get('recipient')['name']"/>,</p>
+                    <p>Your task, <t t-out="object.name"/>, is one day overdue. Please take note.</p>
+                    <p>Best Regards,</p>
+                    <p>Administrator.</p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Task That will soon be due -->    
+        <record id="task_due_in_two_days" model="mail.template">
+            <field name="name">Project Task: Task Due in Two Days</field>
+            <field name="subject">Task Is Due In Two Days</field>
+            <field name="email_from">{{ user.company_id.email }}</field>
+            <field name="email_to">{{ ctx.get('recipient')['email'] }}</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>Dear <t t-out="ctx.get('recipient')['name']"/>,</p>
+                    <p>Your task, <t t-out="object.name"/>, is due in two days. Please take note.</p>
+                    <p>Best Regards,</p>
+                    <p>Administrator.</p>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_navante_seq" model="ir.sequence">
+            <field name="name">Navante Employee Sequence</field>
+            <field name="code">navante.badge</field>
+            <field name="prefix">NAV</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id" />
+            <field name="implementation">no_gap</field>
+            <field name="padding" eval="4"/>
+        </record>
+    </data>
+</odoo>
