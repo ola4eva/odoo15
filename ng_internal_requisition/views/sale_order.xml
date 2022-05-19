@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form//header//button[@name='action_quotation_send']" position="before">
+                    <button name="action_md_approve" type="object" string="Approve" states="sale,done" groups="ng_internal_requisition.group_managing_director" class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

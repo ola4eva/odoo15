@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Notify of tasks that will be due in one day -->
+        <record id="ir_cron_notify_project_task_that_will_be_due" model="ir.cron">
+            <field name="name">Task: Notify Project Task That will be due</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=2, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+            <field name="doall" eval="False"/>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="code">model._notify_task_will_due()</field>
+            <field name="state">code</field>
+        </record>
+
+        <!-- Notify of tasks that are overdue -->
+        <record id="ir_cron_notify_project_task_that_are_overdue" model="ir.cron">
+            <field name="name">Task: Notify Project Tasks That Are Overdue</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=2, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+            <field name="doall" eval="False"/>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="code">model._notify_task_overdue()</field>
+            <field name="state">code</field>
+        </record>
+    
+    </data>
+</odoo>

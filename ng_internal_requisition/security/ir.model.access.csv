@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ir_request_wizard,access_ir_request_wizard,model_ir_request_wizard,base.group_user,1,1,1,1
+access_ng_ir_request,access_ng_ir_request,model_ng_ir_request,base.group_user,1,1,1,1
+access_ng_ir_request_line,access_ng_ir_request_line,model_ng_ir_request_line,base.group_user,1,1,1,1
